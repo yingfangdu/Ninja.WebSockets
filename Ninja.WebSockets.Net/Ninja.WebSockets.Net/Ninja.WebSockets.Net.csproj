@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{285E3660-3A73-45C8-A40F-6AD0950EB2BF}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ninja.WebSockets.Net</RootNamespace>
+    <AssemblyName>Ninja.WebSockets.Net</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;DOTNET_45</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\..\Ninja.WebSockets\Exceptions\EntityTooLargeException.cs">
+      <Link>Exceptions\EntityTooLargeException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\Exceptions\InvalidHttpResponseCodeException.cs">
+      <Link>Exceptions\InvalidHttpResponseCodeException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\Exceptions\SecWebSocketKeyMissingException.cs">
+      <Link>Exceptions\SecWebSocketKeyMissingException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\Exceptions\ServerListenerSocketException.cs">
+      <Link>Exceptions\ServerListenerSocketException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\Exceptions\WebSocketBufferOverflowException.cs">
+      <Link>Exceptions\WebSocketBufferOverflowException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\Exceptions\WebSocketHandshakeFailedException.cs">
+      <Link>Exceptions\WebSocketHandshakeFailedException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\Exceptions\WebSocketVersionNotSupportedException.cs">
+      <Link>Exceptions\WebSocketVersionNotSupportedException.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\HttpHelper.cs">
+      <Link>HttpHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\Internal\BinaryReaderWriter.cs">
+      <Link>Internal\BinaryReaderWriter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\Internal\Events.cs">
+      <Link>Internal\Events.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\Internal\WebSocketFrame.cs">
+      <Link>Internal\WebSocketFrame.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\Internal\WebSocketFrameCommon.cs">
+      <Link>Internal\WebSocketFrameCommon.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\Internal\WebSocketFrameReader.cs">
+      <Link>Internal\WebSocketFrameReader.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\Internal\WebSocketFrameWriter.cs">
+      <Link>Internal\WebSocketFrameWriter.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\Internal\WebSocketImplementation.cs">
+      <Link>Internal\WebSocketImplementation.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\Internal\WebSocketOpCode.cs">
+      <Link>Internal\WebSocketOpCode.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\IPingPongManager.cs">
+      <Link>IPingPongManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\IWebSocketClientFactory.cs">
+      <Link>IWebSocketClientFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\IWebSocketServerFactory.cs">
+      <Link>IWebSocketServerFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\PingPongManager.cs">
+      <Link>PingPongManager.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\PongEventArgs.cs">
+      <Link>PongEventArgs.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\WebSocketClientFactory.cs">
+      <Link>WebSocketClientFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\WebSocketClientOptions.cs">
+      <Link>WebSocketClientOptions.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\WebSocketHttpContext.cs">
+      <Link>WebSocketHttpContext.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\WebSocketServerFactory.cs">
+      <Link>WebSocketServerFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\..\Ninja.WebSockets\WebSocketServerOptions.cs">
+      <Link>WebSocketServerOptions.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

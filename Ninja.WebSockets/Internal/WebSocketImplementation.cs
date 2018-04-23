@@ -461,7 +461,14 @@ namespace Ninja.WebSockets.Internal
             // Avoid calling ToArray on the MemoryStream because it allocates a new byte array on tha heap
             // We avaoid this by attempting to access the internal memory stream buffer
             // This works with supported streams like the recyclable memory stream and writable memory streams
+#if DOTNET_45
+            byte[] bufferInStream = stream.GetBuffer();
+            ArraySegment<byte> buffer = new ArraySegment<byte>(bufferInStream);
+
+            if (bufferInStream == null)
+#else
             if (!stream.TryGetBuffer(out ArraySegment<byte> buffer))
+#endif
             {
                 if (!_tryGetBufferFailureLogged)
                 {

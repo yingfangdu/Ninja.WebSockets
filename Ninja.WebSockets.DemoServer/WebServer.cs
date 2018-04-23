@@ -4,7 +4,7 @@ using System.Net;
 using System.Net.Sockets;
 using System.Net.WebSockets;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
+//using Microsoft.Extensions.Logging;
 using System.Threading;
 using Ninja.WebSockets;
 
@@ -14,15 +14,15 @@ namespace WebSockets.DemoServer
     {
         private TcpListener _listener;
         private bool _isDisposed = false;
-        ILogger _logger;
+        //ILogger _logger;
         private readonly IWebSocketServerFactory _webSocketServerFactory;
-        private readonly ILoggerFactory _loggerFactory;
+        //private readonly ILoggerFactory _loggerFactory;
 
-        public WebServer(IWebSocketServerFactory webSocketServerFactory, ILoggerFactory loggerFactory)
+        public WebServer(IWebSocketServerFactory webSocketServerFactory)
         {
-            _logger = loggerFactory.CreateLogger<WebServer>();
+            //_logger = loggerFactory.CreateLogger<WebServer>();
             _webSocketServerFactory = webSocketServerFactory;
-            _loggerFactory = loggerFactory;
+            //_loggerFactory = loggerFactory;
         }
 
         private void ProcessTcpClient(TcpClient tcpClient)
@@ -45,7 +45,7 @@ namespace WebSockets.DemoServer
                 // Client sends a close conection request OR
                 // An unhandled exception is thrown OR
                 // The server is disposed
-                _logger.LogInformation("Server: Connection opened. Reading Http header from stream");
+                //_logger.LogInformation("Server: Connection opened. Reading Http header from stream");
 
                 // get a secure or insecure stream
                 Stream stream = tcpClient.GetStream();
@@ -54,18 +54,18 @@ namespace WebSockets.DemoServer
                 {
                     // disable ping pong for now (it is causing multi-threaded issues)
                     var options = new WebSocketServerOptions() { KeepAliveInterval = TimeSpan.Zero };
-                    _logger.LogInformation("Http header has requested an upgrade to Web Socket protocol. Negotiating Web Socket handshake");
+                    //_logger.LogInformation("Http header has requested an upgrade to Web Socket protocol. Negotiating Web Socket handshake");
                     WebSocket webSocket = await _webSocketServerFactory.AcceptWebSocketAsync(context, options);
 
-                    _logger.LogInformation("Web Socket handshake response sent. Stream ready.");
+                    //_logger.LogInformation("Web Socket handshake response sent. Stream ready.");
                     await RespondToWebSocketRequestAsync(webSocket, source.Token);
                 }
                 else
                 {
-                    _logger.LogInformation("Http header contains no web socket upgrade request. Ignoring");
+                    //_logger.LogInformation("Http header contains no web socket upgrade request. Ignoring");
                 }
 
-                _logger.LogInformation("Server: Connection closed");
+                //_logger.LogInformation("Server: Connection closed");
             }
             catch (ObjectDisposedException)
             {
@@ -73,7 +73,7 @@ namespace WebSockets.DemoServer
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.ToString());
+                //_logger.LogError(ex.ToString());
             }
             finally
             {
@@ -85,7 +85,7 @@ namespace WebSockets.DemoServer
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError($"Failed to close TCP connection: {ex}");
+                    //_logger.LogError($"Failed to close TCP connection: {ex}");
                 }
             }
         }
@@ -100,7 +100,7 @@ namespace WebSockets.DemoServer
                 WebSocketReceiveResult result = await webSocket.ReceiveAsync(buffer, token);
                 if (result.MessageType == WebSocketMessageType.Close)
                 {
-                    _logger.LogInformation($"Client initiated close. Status: {result.CloseStatus} Description: {result.CloseStatusDescription}");
+                    //_logger.LogInformation($"Client initiated close. Status: {result.CloseStatus} Description: {result.CloseStatusDescription}");
                     break;
                 }
 
@@ -125,7 +125,7 @@ namespace WebSockets.DemoServer
                 IPAddress localAddress = IPAddress.Any;
                 _listener = new TcpListener(localAddress, port);
                 _listener.Start();
-                _logger.LogInformation($"Server started listening on port {port}");
+                //_logger.LogInformation($"Server started listening on port {port}");
                 while(true)
                 {
                     TcpClient tcpClient = await _listener.AcceptTcpClientAsync();
@@ -160,10 +160,10 @@ namespace WebSockets.DemoServer
                 }
                 catch (Exception ex)
                 {
-                    _logger.LogError( ex.ToString());
+                    //_logger.LogError( ex.ToString());
                 }
                 
-                _logger.LogInformation( "Web Server disposed");
+                //_logger.LogInformation( "Web Server disposed");
             }
         }
     }
