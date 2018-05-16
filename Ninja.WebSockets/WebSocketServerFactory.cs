@@ -139,6 +139,13 @@ namespace Ninja.WebSockets
                                        + "Upgrade: websocket\r\n"
                                        + "Sec-WebSocket-Accept: " + setWebSocketAccept);
 
+                    Regex webSocketProtocolRegex = new Regex("Sec-WebSocket-Protocol: (.*)");
+                    Match matchProtocol = webSocketProtocolRegex.Match(httpHeader);
+                    if (matchProtocol.Success)
+                    {
+                        response += "\r\n" + matchProtocol.Groups[0].Value.Trim() + "\r\n";
+                    }
+
                     Events.Log.SendingHandshakeResponse(guid, response);
                     await HttpHelper.WriteHttpHeaderAsync(response, stream, token);
                 }
