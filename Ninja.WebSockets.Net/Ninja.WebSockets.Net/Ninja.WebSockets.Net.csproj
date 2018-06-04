@@ -7,8 +7,8 @@
     <ProjectGuid>{285E3660-3A73-45C8-A40F-6AD0950EB2BF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ninja.WebSockets.Net</RootNamespace>
-    <AssemblyName>Ninja.WebSockets.Net</AssemblyName>
+    <RootNamespace>Ninja.WebSockets</RootNamespace>
+    <AssemblyName>Ninja.WebSockets</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
